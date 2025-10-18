@@ -1,4 +1,5 @@
 name,url,pricing_model,key_strengths,key_weaknesses
-Notion,https://www.notion.so,freemium,"Rugalmas adatbázis;Széles sablongyűjtemény","Nincs natív hivatkozásformázás;Konfigurációs időigény"
-Zotero,https://www.zotero.org,open_source,"Automatikus bibliográfia;Bővítmények","Meredek tanulási görbe;Korlátozott együttműködés"
-Mendeley,https://www.mendeley.com,freemium,"Cikkajánló motor;PDF annotáció","Szinkronizációs problémák;Adatvédelmi aggályok"
+ParkMobile,https://parkmobile.io,freemium,"Mobilfizetés integráció;Széles lefedettség","Nincs valós idejű CV alapú detektálás;Főként fizetésre fókuszál"
+Parkopedia,https://www.parkopedia.com,freemium,"Globális parkolóhely-adatbázis;Navigációs integráció","Statikus adatok;Nem B2B fókuszú"
+Bosch Smart Parking,https://www.bosch-mobility-solutions.com/en/solutions/parking/,enterprise,"IoT szenzorok;Nagy megbízhatóság","Drága hardver;Lassú telepítés"
+ParkNav,https://www.parknav.com,free,"Térképes megjelenítés;Közösségi adatok","Nem valós idejű;Nincs admin dashboard"

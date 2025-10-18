@@ -1,21 +1,24 @@
 {
   "id": "INT-005",
-  "date": "2025-02-08",
+  "date": "2025-10-14",
   "method": "in_person",
   "participant": {
-    "pseudonym": "Flóra",
-    "segment": "Doktori előkészítős hallgató"
+    "pseudonym": "László",
+    "segment": "Kisebb cég ügyvezetője, 50 fős iroda parkolási felelőse"
   },
   "consent": true,
   "insights": [
-    "Saját Notion adatbázist használ, de hiányzik a hivatkozás-ellenőrzés.",
-    "Szüksége van konzulensi státuszriportokra." 
+    "A cégnél korlátozott számú parkolóhely van, és a dolgozók versenyeznek érte.",
+    "Nincs automatizált rendszer, így a recepció manuálisan osztja ki a helyeket.",
+    "Szeretne egy egyszerű megoldást, ami nem túl drága és könnyen kezelhető."
   ],
   "pain_points": [
-    "A jegyzetek megosztása során eltűnnek a kommentek.",
-    "Nincs automatizált értesítés a hiányzó adatokról." 
+    "Napi konfliktusok a parkolóhelyekkel kapcsolatban, mert nem átlátható a rendszer.",
+    "A recepciós idejének nagy részét veszi igénybe a parkolási kérések kezelése.",
+    "Nincs statisztika arról, hogy ki mikor és mennyit parkol, így nehéz igazságosan elosztani a helyeket."
   ],
   "quotes": [
-    "\"Ha a konzulensem valamit kér, manuálisan kell visszakeresnem a vonatkozó forrásokat.\""
+    "\"Ha lenne egy app, ahol a dolgozók látnák, hogy van-e szabad hely, akkor nem a recepcióst kellene zavarni.\"",
+    "\"Nem kell túl bonyolult rendszer, de valami egyszerű mobilos megoldás sokat segítene a mindennapi működésben.\""
   ]
 }

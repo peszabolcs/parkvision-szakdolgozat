@@ -1,21 +1,24 @@
 {
   "id": "INT-004",
-  "date": "2025-02-08",
+  "date": "2025-10-13",
   "method": "online",
   "participant": {
-    "pseudonym": "Ernő",
-    "segment": "Első generációs egyetemista"
+    "pseudonym": "Katalin",
+    "segment": "IT vezető, nagyvállalati infrastruktúra-felelős"
   },
   "consent": true,
   "insights": [
-    "Word dokumentumban vezeti a jegyzeteit, amit nehéz verziózni.",
-    "Szívesen kapna sablonokat a fejezetekhez." 
+    "A cég több helyszínnel rendelkezik, és mindegyik parkoló külön rendszerben van kezelve.",
+    "Az IT csapat felelős új digitális megoldások integrálásáért, de prioritás a biztonság és a skálázhatóság.",
+    "Szeretnének egy mobilappot a dolgozók számára, ami egységes felületet biztosít minden telephelyre."
   ],
   "pain_points": [
-    "Nem érti a különbséget az MLA és IEEE hivatkozások között.",
-    "Bonyolultnak találja a források importját."
+    "A meglévő parkolási rendszerek nem integrálhatók könnyen modern API-kon keresztül.",
+    "A dolgozók folyamatosan kérdezik, hogy mikor lesz mobilalkalmazás a parkoláshoz.",
+    "Biztonsági és adatvédelmi előírások miatt nem használhatnak bármilyen külső megoldást."
   ],
   "quotes": [
-    "\"Mindig attól félek, hogy elveszik egy fontos idézet, mert rossz verziót küldök el.\""
+    "\"Fontos, hogy a mobilapp REST API-n keresztül kommunikáljon, és a GDPR szabályokat is kövessük.\"",
+    "\"Ha van egy modern Angular alapú megoldás, amit könnyen integrálhatunk, az nagy segítség lenne.\""
   ]
 }

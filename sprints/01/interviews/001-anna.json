@@ -1,21 +1,24 @@
 {
   "id": "INT-001",
-  "date": "2025-02-06",
+  "date": "2025-10-10",
   "method": "online",
   "participant": {
-    "pseudonym": "Anna",
-    "segment": "Harmadéves nappali mérnökinformatikus"
+    "pseudonym": "Márta",
+    "segment": "Facility manager, bevásárlóközpont"
   },
   "consent": true,
   "insights": [
-    "Minden forrásról saját Google Sheetben vezet listát, de nehezen kereshető vissza.",
-    "A konzulens visszajelzését emailben kapja, ami szétesett folyamatot okoz."
+    "A parkolóhely-kihasználtságot jelenleg manuálisan ellenőrzi, rendszeres sétákkal a parkolóban.",
+    "Nincs valós idejű adat arról, hogy hány szabad hely van csúcsidőben.",
+    "A látogatók gyakran panaszkodnak, hogy nem találnak helyet, miközben a másik oldalon vannak szabad helyek."
   ],
   "pain_points": [
-    "Sok idő a jegyzetek átmásolása Word dokumentumba.",
-    "Kézi APA hivatkozás formázás." 
+    "Időigényes a kihasználtság manuális ellenőrzése.",
+    "Nincs átlátható adatforrás, ami alapján döntéseket hozhat.",
+    "A látogatói elégedetlenség miatt rossz értékeléseket kapnak."
   ],
   "quotes": [
-    "\"Nem látom át, hogy melyik jegyzet melyik fejezethez tartozik, mindig ide-oda görgetek.\""
+    "\"Ha lenne egy app, ahol láthatnám, hogy melyik szinten mennyi szabad hely van, akkor sokkal hatékonyabban tudnánk működni.\"",
+    "\"Csúcsidőben káosz van, mert mindenki kör-körbe jár a parkolóban.\""
   ]
 }

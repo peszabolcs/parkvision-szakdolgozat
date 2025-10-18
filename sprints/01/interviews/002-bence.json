@@ -1,21 +1,24 @@
 {
   "id": "INT-002",
-  "date": "2025-02-06",
+  "date": "2025-10-11",
   "method": "in_person",
   "participant": {
-    "pseudonym": "Bence",
-    "segment": "Levelezős hallgató, aki munka mellett ír szakdolgozatot"
+    "pseudonym": "Gábor",
+    "segment": "Parkolóház tulajdonos, 350 férőhelyes parkoló üzemeltetője"
   },
   "consent": true,
   "insights": [
-    "Munka utáni időben mobilon is szeretne jegyzetelni.",
-    "Naptárban jelöli, hogy melyik forrást mikor dolgozta fel." 
+    "Az ügyfelek rendszeresen kérdezik, hogy hol vannak szabad helyek, de erre nincs automatikus megoldása.",
+    "A parkolóház kihasználtsága egyenetlen, némely szinteken torlódás van, máshol üres helyek.",
+    "Szeretne modernizálni és versenyelőnyt szerezni a környékbeli parkolókkal szemben."
   ],
   "pain_points": [
-    "Nem fér hozzá a céges gépen a személyes Google Drive-jához.",
-    "A bibliográfia frissítése manuális és hibás." 
+    "Nincs automatikus rendszer, ami megmutatná a szabad helyeket az ügyfeleknek.",
+    "A torlódások miatt az ügyfelek frusztráltak és rossz véleményeket hagynak.",
+    "A meglévő táblák statikusak, nem mutatják dinamikusan az elérhető helyeket."
   ],
   "quotes": [
-    "\"Ha lenne egy gomb, ami generálja a hivatkozást, azzal órákat spórolnék hetente.\""
+    "\"Ha az ügyfelem még az autóba ülés előtt látná mobilon, hogy hol van szabad hely, sokkal gyorsabban találna parkolót.\"",
+    "\"Olyan rendszert szeretnék, ami valós időben mutatja a kapacitást, ne csak egy számot a bejáratnál.\""
   ]
 }
