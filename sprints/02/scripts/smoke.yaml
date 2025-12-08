@@ -1,0 +1,59 @@
+name: Smoke Tests
+description: Basic smoke tests for ParkVision Frontend MVP
+
+tests:
+  - name: Homepage loads
+    request:
+      method: GET
+      url: "{{BASE_URL}}/"
+    expect:
+      status: 200
+      headers:
+        - name: content-type
+          contains: "text/html"
+
+  - name: Dashboard loads
+    request:
+      method: GET
+      url: "{{BASE_URL}}/dashboard"
+    expect:
+      status: 200
+
+  - name: Parking Spaces page loads
+    request:
+      method: GET
+      url: "{{BASE_URL}}/parking-spaces"
+    expect:
+      status: 200
+
+  - name: Areas page loads
+    request:
+      method: GET
+      url: "{{BASE_URL}}/areas"
+    expect:
+      status: 200
+
+  - name: API mock - parking spaces
+    request:
+      method: GET
+      url: "{{BASE_URL}}/api/parking-spaces"
+    expect:
+      status: 200
+      body:
+        type: json
+        schema:
+          type: array
+
+  - name: API mock - areas
+    request:
+      method: GET
+      url: "{{BASE_URL}}/api/areas"
+    expect:
+      status: 200
+      body:
+        type: json
+        schema:
+          type: array
+
+variables:
+  BASE_URL: "http://localhost:4173"

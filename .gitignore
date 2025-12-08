@@ -4,3 +4,28 @@ __pycache__/
 .DS_Store
 .vscode/
 .idea/
+
+# Frontend
+node_modules/
+dist/
+coverage/
+*.log
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Terraform
+sprints/02/infra/terraform/*.tfstate
+sprints/02/infra/terraform/*.tfstate.*
+sprints/02/infra/terraform/*.tfvars
+sprints/02/infra/terraform/.terraform/
+sprints/02/infra/terraform/.terraform.lock.hcl
+sprints/02/infra/terraform/plan.out
+
+# MSW
+public/mockServiceWorker.js
+
+# Reports
+sprints/02/reports/*
+!sprints/02/reports/.gitkeep

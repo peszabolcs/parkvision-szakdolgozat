@@ -1,0 +1,37 @@
+### Smoke Test 1: Homepage loads
+GET http://localhost:4173/
+Accept: text/html
+
+### Expected: 200 OK
+
+###
+
+### Smoke Test 2: Dashboard loads
+GET http://localhost:4173/dashboard
+Accept: text/html
+
+### Expected: 200 OK
+
+###
+
+### Smoke Test 3: Parking Spaces page
+GET http://localhost:4173/parking-spaces
+Accept: text/html
+
+### Expected: 200 OK
+
+###
+
+### Smoke Test 4: Areas page
+GET http://localhost:4173/areas
+Accept: text/html
+
+### Expected: 200 OK
+
+###
+
+### Smoke Test 5: Health check
+GET http://localhost:4173/
+Accept: application/json
+
+### Expected: 200 OK

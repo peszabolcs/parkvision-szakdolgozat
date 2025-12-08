@@ -1,69 +1,221 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/VSPuLl7_)
-# Szakdolgozat 2.0 – Sprint 1 Kickoff
+# ParkVision Frontend MVP - Sprint 2
 
-Szia! Üdv a kurzus első, legfontosabb sprintjében. A következő három hétben nem kódot írsz, hanem feltárod a valódi problémát: interjúzol, piacot elemzel és döntéseket dokumentálsz. Ha jól dolgozol, a sprint végére bizonyítod, hogy létező igényre építesz – ez a teljes projekt alapja.
+Smart Parking Management System - Frontend MVP Implementation
 
-## Fájlstruktúra (Sprint 1)
-- `course.yaml`: hallgatói metaadatok és track választás (root szinten marad).
-- `sprints/01/prd.yaml`: a Product Requirements Document (PRD) 0.1-es verziója.
-- `sprints/01/interviews/`: legalább **5** felhasználói interjú JSON jegyzőkönyve.
-- `sprints/01/market/competitors.csv`: legalább **3** versenytárs elemzése.
-- `sprints/01/architecture/adr/`: legalább **1** Architecture Decision Record.
-- `sprints/01/ai/usage_plan.yaml`: MI-használati terv (mire és mire nem használod a copilotot).
-- `sprints/01/ai/ai_log.jsonl`: MI-használat naplója, legalább **N** bejegyzéssel (N a `course.yaml`-ból).
-- `scripts/validate.py`: helyi validátor a sprint leadása előtt.
-- `scripts/schemas/`: JSON sémák (pl. interjúk) a gépi ellenőrzéshez.
+## Sprint 2 Deliverables
 
-> **Fontos:** minden Sprint 1-specifikus artefaktum a `sprints/01/` mappában él, a validátor is itt keresi őket.
+This repository contains the complete Sprint 2 MVP implementation for ParkVision, including:
 
-## Leadási folyamat
-1. Dolgozz a saját (forkolt) repository-ban, töltsd ki a `course.yaml`-t.
-2. Készíts Pull Requestet (`main` ágra). A PR ugyanaz, mint a beadás.
-3. A CI automatikusan lefut, és PASS / FAIL eredményt ad a sprint követelményeire.
-4. Csak a PASS státuszú PR tekinthető leadottnak.
-5. Leadás előtt futtasd helyben: `python scripts/validate.py --sprint 1`.
+-  **Spec v0.2** - Product specification with scope, NFRs, and acceptance criteria
+-  **User Stories** - 5 stories with acceptance criteria (INVEST compliant)
+-  **ADR** - 2 architecture decision records (Platform + IaC)
+-  **Wireframes** - 5 screen descriptions (normal, empty, error states)
+-  **Frontend MVP** - React 18 + Vite + TypeScript + Material-UI
+-  **Tests** - 6 test files with ≥60% coverage
+-  **Mock Data** - MSW (Mock Service Worker) for API simulation
+-  **IaC** - Terraform configuration (validate + plan)
+-  **CI/CD** - GitHub Actions workflows
+-  **Documentation** - Traceability matrix, DoR/DoD, AI log
 
-## Heti ütemterv (javaslat)
-**1. hét – Alapozás**
-- Repository klónozása, `course.yaml` kitöltése (track dokumentálása).
-- `sprints/01/prd.yaml` első verziója: probléma, célcsoport, értékajánlat, scope.
-- `sprints/01/ai/usage_plan.yaml` megírása: célok, guardrail-ek, eszközök.
+## Quick Start
 
-**2. hét – Kutatás**
-- Végezz legalább **5** interjút; rögzítsd a jegyzőkönyveket `sprints/01/interviews/` alatt.
-- Etika: csak engedéllyel rögzíts, anonimizáld a résztvevőket (pszeudonim), PII-t ne adj át MI-nek.
-- Elemezz legalább **3** versenytársat a `sprints/01/market/competitors.csv` fájlban.
-- Hozd meg az első technológiai döntést és dokumentáld az `architecture/adr/` mappában.
+### Prerequisites
 
-**3. hét – Véglegesítés és leadás**
-- Frissítsd a PRD-t az interjú- és piackutatási insightokkal.
-- Frissítsd az `ai/ai_log.jsonl`-t, hogy elérje a minimum bejegyzésszámot.
-- Futtasd a helyi validátort, javítsd a hibákat, majd készíts PR-t.
+- Node.js 18.x
+- npm 9.x
+- Terraform 1.5+ (for IaC)
 
-## Interjú-etika és MI guardrail-ek
-- Kérj kifejezett hozzájárulást a felvételhez és jegyzeteléshez.
-- Anonimizáld a jegyzőkönyveket (csak pszeudonim és szegmens szerepeljen).
-- Ne illessz be személyazonosító adatot (PII) külső MI eszközbe.
-- Minden MI kimenetet kritikusan ellenőrizz, a végső döntés mindig a tiéd.
+### Installation
 
-## Definition of Done – Sprint 1
-| Tétel | Minimum elvárás | Ellenőrzés |
-| --- | --- | --- |
-| PRD (`sprints/01/prd.yaml`) | `problem.statement`, `target_audience`, `value_proposition`, `scope.in/out` kitöltve | YAML validáció + kulcsok (CI) |
-| Interjúk (`sprints/01/interviews/*.json`) | ≥ **5** fájl, séma szerint | JSON sémaellenőrzés (CI) |
-| Versenytársak (`sprints/01/market/competitors.csv`) | ≥ **3** sor a fejlécen túl | Sorok száma, fejléc (CI) |
-| ADR (`sprints/01/architecture/adr/*.md`) | ≥ **1** Markdown fájl | Fájl léte (CI) |
-| MI dokumentáció (`sprints/01/ai/*`) | Usage plan + napló ≥ **N** bejegyzés | Fájl léte + bejegyzésszám (CI) |
-| Leadás | PR a `main` ágra, zöld CI | PASS szükséges |
-
-## Használat
 ```bash
-python scripts/validate.py --sprint 1
-```
-A szkript ellenőrzi, hogy minden kötelező Sprint 1 artefaktum a megfelelő helyen és formátumban megtalálható-e, továbbá az AI napló eléri-e a `course.yaml`-ban megadott minimumot.
+# Install dependencies
+npm install
 
-## Forrás
-A tartalom a kurzus hivatalos Hallgatói útmutatója (Sprint 1 fejezet) alapján készült.
+# Start development server with mock API
+npm run dev
+
+# Open http://localhost:5173
+```
+
+### Available Scripts
+
+```bash
+npm run dev          # Start dev server (port 5173)
+npm run build        # Build for production
+npm run preview      # Preview production build
+npm run test         # Run tests once
+npm run test:watch   # Run tests in watch mode
+npm run test:coverage # Run tests with coverage report
+npm run lint         # Run ESLint
+npm run ci-local     # Run full CI locally (lint + test + build)
+```
+
+## Project Structure
+
+```
+├── .github/workflows/     # CI/CD workflows (test, build, terraform)
+├── sprints/02/
+│   ├── docs/
+│   │   ├── spec/          # Spec v0.2
+│   │   ├── stories/       # User Stories + AC
+│   │   ├── adr/           # Architecture Decision Records
+│   │   ├── process/       # DoR/DoD
+│   │   └── traceability.md
+│   ├── wireframes/        # Wireframe descriptions
+│   ├── tests/acceptance/  # Gherkin feature files
+│   ├── deploy/            # Deployment config (target.yaml)
+│   ├── scripts/           # Smoke tests
+│   ├── infra/terraform/   # IaC configuration
+│   └── ai/                # AI usage log
+├── src/
+│   ├── components/        # React components
+│   ├── pages/             # Page components (Dashboard, Areas, etc.)
+│   ├── hooks/             # Custom hooks (useQuery)
+│   ├── mocks/             # MSW mock handlers
+│   ├── types/             # TypeScript types
+│   ├── utils/             # Utility functions
+│   └── test/              # Test setup
+└── package.json
+```
+
+## Features
+
+### Implemented (Sprint 2 MVP)
+
+-  **Dashboard** - Real-time parking occupancy statistics
+- 🅿️ **Parking Spaces List** - Table view with status filtering
+- 🗺️ **Areas Management** - Parking area overview with capacity
+- 🚫 **Empty State** - Informative UI when no data available
+- [!] **Error Handling** - Error banner with retry functionality
+- 📱 **Responsive Design** - Mobile and desktop optimized
+
+### Mock Scenarios
+
+Switch between scenarios using environment variable:
+
+```bash
+# Normal scenario (default)
+VITE_MOCK_SCENARIO=normal npm run dev
+
+# Empty state scenario
+VITE_MOCK_SCENARIO=empty npm run dev
+
+# Error state scenario
+VITE_MOCK_SCENARIO=error npm run dev
+```
+
+## Testing
+
+### Run Tests
+
+```bash
+# Run all tests
+npm test
+
+# Run with coverage
+npm run test:coverage
+
+# Coverage report: sprints/02/reports/coverage/index.html
+```
+
+### Test Coverage
+
+- **Target:** ≥60% line coverage
+- **Current:** ~68%
+- **Test files:** 6 (EmptyState, ErrorBanner, StatCard, useParkingSpaces, date utils)
+
+### Smoke Tests
+
+```bash
+# Start preview server
+npm run preview
+
+# Run smoke tests (manual)
+# - Check: http://localhost:4173/
+# - Check: http://localhost:4173/dashboard
+# - Check: http://localhost:4173/parking-spaces
+# - Check: http://localhost:4173/areas
+```
+
+## Infrastructure (IaC)
+
+### Terraform Setup
+
+```bash
+cd sprints/02/infra/terraform
+
+# Initialize
+terraform init
+
+# Validate
+terraform validate
+
+# Plan (requires Vercel API token)
+terraform plan -out=plan.out
+```
+
+See [Terraform README](sprints/02/infra/terraform/README.md) for details.
+
+## CI/CD
+
+GitHub Actions workflows:
+
+- **Test & Coverage** - Runs tests, generates coverage report
+- **Build** - Builds production bundle
+- **Terraform** - Validates and plans infrastructure
+
+All workflows run on:
+- Push to `main`
+- Pull requests to `main`
+
+## Documentation
+
+### Key Documents
+
+- [Spec v0.2](sprints/02/docs/spec/product_spec_v0.2.md) - Product specification
+- [User Stories](sprints/02/docs/stories/user_stories.md) - 5 stories with AC
+- [ADR-0001](sprints/02/docs/adr/0001-frontend-platform-and-deployment.md) - Platform choice
+- [ADR-0002](sprints/02/docs/adr/0002-iac-strategy-terraform.md) - IaC strategy
+- [Traceability](sprints/02/docs/traceability.md) - Story → Test → Code mapping
+- [DoR/DoD](sprints/02/docs/process/dor_dod.md) - Definition of Ready/Done
+- [AI Log](sprints/02/ai/ai_log.jsonl) - AI tool usage log
+
+## Tech Stack
+
+- **Frontend:** React 18.2, TypeScript 5.0
+- **Build Tool:** Vite 4.3
+- **UI Library:** Material-UI v5
+- **State Management:** Zustand 3.7
+- **Data Fetching:** TanStack Query 4.29
+- **Mock API:** MSW 1.2
+- **Testing:** Vitest, React Testing Library
+- **IaC:** Terraform 1.5
+- **Deployment:** Vercel (planned)
+
+## Known Issues
+
+- Pagination not implemented (showing first 20 items only)
+- Table column sorting limited to "Updated" column
+- No real backend integration (mock data only)
+
+## Next Steps (Sprint 3)
+
+- [ ] E2E tests with Playwright
+- [ ] Real backend API integration
+- [ ] Full table pagination and sorting
+- [ ] Terraform apply automation in CI
+- [ ] Performance optimization (Lighthouse CI)
 
 ## License
+
 MIT
+
+## Contact
+
+For questions or feedback, please create an issue in this repository.
+
+---
+
+**Sprint:** 2
+**Version:** 0.2.0
+**Last Updated:** 2025-12-08
