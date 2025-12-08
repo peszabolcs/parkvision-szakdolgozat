@@ -32,7 +32,7 @@ jobs:
         run: npm run test:coverage
 
       - name: Upload coverage reports
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: coverage-reports
           path: |
@@ -45,7 +45,7 @@ jobs:
           COVERAGE_PERCENT=$(echo "$COVERAGE * 100" | bc)
           echo "Coverage: $COVERAGE_PERCENT%"
           if (( $(echo "$COVERAGE < 0.60" | bc -l) )); then
-            echo "❌ Coverage $COVERAGE_PERCENT% is below 60% threshold"
+            echo "[ERROR] Coverage $COVERAGE_PERCENT% is below 60% threshold"
             exit 1
           fi
-          echo "✅ Coverage $COVERAGE_PERCENT% meets 60% threshold"
+          echo "[OK] Coverage $COVERAGE_PERCENT% meets 60% threshold"
