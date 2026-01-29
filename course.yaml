@@ -1,8 +1,0 @@
-student:
-  name: "Perjési Szabolcs"
-  id: "EJDD1H"
-project:
-  title: "ParkVision - Computer Vision alapú parkolóhely-felismerő rendszer mobilalkalmazása"
-  product_ml_features: false
-ai:
-  log_min_entries_per_sprint: 3
