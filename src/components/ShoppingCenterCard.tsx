@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import { motion } from 'framer-motion';
 import {
   Card,
   CardContent,
@@ -7,6 +9,7 @@ import {
   Stack,
   Chip,
   LinearProgress,
+  Skeleton,
 } from '@mui/material';
 import {
   LocationOn,
@@ -23,6 +26,8 @@ interface ShoppingCenterCardProps {
 
 export const ShoppingCenterCard = ({ center, onClick }: ShoppingCenterCardProps) => {
   const { t } = useTranslation();
+  const [imageError, setImageError] = useState(false);
+  const [imageLoading, setImageLoading] = useState(true);
   const availableSpaces = center.capacity - center.occupied;
   const occupancyRate = (center.occupied / center.capacity) * 100;
 
@@ -32,34 +37,83 @@ export const ShoppingCenterCard = ({ center, onClick }: ShoppingCenterCardProps)
     return 'success';
   };
 
+  // Generate Unsplash placeholder URL with shopping mall theme
+  const getImageUrl = () => {
+    if (imageError) return null;
+    if (center.imageUrl) return center.imageUrl;
+    // Use Unsplash placeholder with shopping mall theme and center name as seed
+    return `https://source.unsplash.com/400x300/?shopping,mall,${encodeURIComponent(center.name)}`;
+  };
+
+  const handleImageError = () => {
+    setImageError(true);
+    setImageLoading(false);
+  };
+
+  const handleImageLoad = () => {
+    setImageLoading(false);
+  };
+
   return (
-    <Card
-      sx={{
-        height: '100%',
-        display: 'flex',
-        flexDirection: 'column',
-        cursor: onClick ? 'pointer' : 'default',
-        transition: 'transform 0.2s, box-shadow 0.2s',
-        '&:hover': onClick ? {
-          transform: 'translateY(-4px)',
-          boxShadow: 6,
-        } : {},
-      }}
-      onClick={onClick}
+    <motion.div
+      whileHover={onClick ? { scale: 1.02, y: -4 } : {}}
+      transition={{ duration: 0.2, ease: 'easeOut' }}
+      style={{ height: '100%' }}
     >
-      <CardMedia
-        component="div"
+      <Card
         sx={{
-          height: 180,
-          bgcolor: 'grey.300',
+          height: '100%',
           display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          backgroundImage: `linear-gradient(45deg, #667eea 0%, #764ba2 100%)`,
+          flexDirection: 'column',
+          cursor: onClick ? 'pointer' : 'default',
+          transition: 'box-shadow 0.2s',
+          '&:hover': onClick
+            ? {
+                boxShadow: 8,
+              }
+            : {},
         }}
+        onClick={onClick}
       >
-        <LocalParking sx={{ fontSize: 64, color: 'white', opacity: 0.8 }} />
-      </CardMedia>
+      <Box sx={{ position: 'relative', height: 180 }}>
+        {imageLoading && !imageError && (
+          <Skeleton variant="rectangular" width="100%" height={180} animation="wave" />
+        )}
+        {(() => {
+          const imageUrl = getImageUrl();
+          return !imageError && imageUrl ? (
+            <CardMedia
+              component="img"
+              image={imageUrl}
+              alt={center.name}
+              onError={handleImageError}
+              onLoad={handleImageLoad}
+              sx={{
+                height: 180,
+                objectFit: 'cover',
+                display: imageLoading ? 'none' : 'block',
+              }}
+            />
+          ) : null;
+        })()}
+        {imageError && (
+          <Box
+            sx={{
+              height: 180,
+              bgcolor: 'grey.300',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              backgroundImage: (theme) =>
+                theme.palette.mode === 'dark'
+                  ? 'linear-gradient(135deg, #3d8492 0%, #33a498 100%)'
+                  : 'linear-gradient(135deg, #26636f 0%, #00897b 100%)',
+            }}
+          >
+            <LocalParking sx={{ fontSize: 64, color: 'white', opacity: 0.8 }} />
+          </Box>
+        )}
+      </Box>
       <CardContent sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
         <Typography variant="h6" component="h3" gutterBottom fontWeight="bold">
           {center.name}
@@ -104,5 +158,6 @@ export const ShoppingCenterCard = ({ center, onClick }: ShoppingCenterCardProps)
         </Stack>
       </CardContent>
     </Card>
+    </motion.div>
   );
 };

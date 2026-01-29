@@ -19,13 +19,14 @@ import {
   Brightness7,
   Language as LanguageIcon,
   Login as LoginIcon,
-  Map as MapIcon,
 } from '@mui/icons-material';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { useThemeMode } from '../contexts/useThemeMode';
 import { ShoppingCenterCard } from '../components/ShoppingCenterCard';
+import { InteractiveMap } from '../components/InteractiveMap';
 import { shoppingCenters } from '../mocks/data/shoppingCenters';
+import { shoppingCentersToAreas } from '../utils/dataAdapters';
 
 export default function PublicHomePage() {
   const { t, i18n } = useTranslation();
@@ -125,31 +126,18 @@ export default function PublicHomePage() {
         </Container>
       </Box>
 
-      {/* Map Placeholder */}
+      {/* Interactive Map */}
       <Container maxWidth="lg" sx={{ mt: 4 }}>
-        <Paper
-          elevation={3}
-          sx={{
-            height: 400,
-            bgcolor: 'grey.200',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            flexDirection: 'column',
-            borderRadius: 2,
-            overflow: 'hidden',
-            backgroundImage: 'linear-gradient(45deg, #f5f5f5 25%, transparent 25%, transparent 75%, #f5f5f5 75%, #f5f5f5), linear-gradient(45deg, #f5f5f5 25%, transparent 25%, transparent 75%, #f5f5f5 75%, #f5f5f5)',
-            backgroundSize: '20px 20px',
-            backgroundPosition: '0 0, 10px 10px',
-          }}
-        >
-          <MapIcon sx={{ fontSize: 64, color: 'grey.400', mb: 2 }} />
-          <Typography variant="h6" color="text.secondary">
-            {t('public.map.placeholder', 'Interactive Map Coming Soon')}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {t('public.map.description', 'View all shopping centers on an interactive map')}
-          </Typography>
+        <Paper elevation={3} sx={{ borderRadius: 2, overflow: 'hidden' }}>
+          <Box sx={{ height: { xs: '300px', sm: '400px', md: '500px' } }}>
+            <InteractiveMap
+              areas={shoppingCentersToAreas(shoppingCenters)}
+              showSearch={true}
+              showUserLocation={true}
+              height="100%"
+              zoom={12}
+            />
+          </Box>
         </Paper>
       </Container>
 
