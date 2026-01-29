@@ -2,12 +2,15 @@ import { useState, useMemo } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import { Box, Typography, Button, Card, CardContent, Chip, Stack, TextField, InputAdornment, Paper } from '@mui/material';
 import { Navigation, Search, MyLocation, DirectionsCar } from '@mui/icons-material';
+import { useTranslation } from 'react-i18next';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { useAreas } from '../hooks/useAreas';
 import { getOccupancyColor } from '../mocks/data/parkingLocations';
 import type { Area } from '../types';
 import { PageTransition } from '../components/PageTransition';
+
+type TranslateFunction = (key: string, fallback?: string) => string;
 
 const BUDAPEST_CENTER: [number, number] = [47.4979, 19.0402];
 
@@ -48,9 +51,10 @@ const createMarkerIcon = (color: 'success' | 'warning' | 'error') => {
 
 interface UserLocationMarkerProps {
   position: [number, number];
+  t: TranslateFunction;
 }
 
-const UserLocationMarker = ({ position }: UserLocationMarkerProps) => {
+const UserLocationMarker = ({ position, t }: UserLocationMarkerProps) => {
   const map = useMap();
 
   const userIcon = L.divIcon({
@@ -77,9 +81,9 @@ const UserLocationMarker = ({ position }: UserLocationMarkerProps) => {
     <>
       <Marker position={position} icon={userIcon}>
         <Popup>
-          <Typography variant="body2" fontWeight="bold">Your Location</Typography>
+          <Typography variant="body2" fontWeight="bold">{t('map.yourLocation', 'Your Location')}</Typography>
           <Button size="small" onClick={handleCenter} startIcon={<MyLocation />}>
-            Center Map
+            {t('map.centerMap', 'Center Map')}
           </Button>
         </Popup>
       </Marker>
@@ -88,6 +92,7 @@ const UserLocationMarker = ({ position }: UserLocationMarkerProps) => {
 };
 
 const MapPage = () => {
+  const { t } = useTranslation();
   const { data: areas, isLoading, isError } = useAreas();
   const [searchQuery, setSearchQuery] = useState('');
   const [userLocation, setUserLocation] = useState<[number, number] | null>(null);
@@ -128,7 +133,7 @@ const MapPage = () => {
   if (isLoading) {
     return (
       <Box sx={{ p: 3 }}>
-        <Typography role="status" aria-live="polite">Loading map...</Typography>
+        <Typography role="status" aria-live="polite">{t('common.loading')}</Typography>
       </Box>
     );
   }
@@ -136,7 +141,7 @@ const MapPage = () => {
   if (isError) {
     return (
       <Box sx={{ p: 3 }}>
-        <Typography color="error" role="alert">Error loading areas</Typography>
+        <Typography color="error" role="alert">{t('error.loadingFailed')}</Typography>
       </Box>
     );
   }
@@ -149,7 +154,7 @@ const MapPage = () => {
           <TextField
             fullWidth
             size="small"
-            placeholder="Search parking locations..."
+            placeholder={t('map.searchPlaceholder', 'Search parking locations...')}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             aria-label="Search parking locations"
@@ -168,7 +173,7 @@ const MapPage = () => {
             sx={{ whiteSpace: 'nowrap' }}
             aria-label="Show my location on map"
           >
-            My Location
+            {t('map.myLocation', 'My Location')}
           </Button>
         </Stack>
       </Box>
@@ -185,7 +190,7 @@ const MapPage = () => {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
 
-          {userLocation && <UserLocationMarker position={userLocation} />}
+          {userLocation && <UserLocationMarker position={userLocation} t={(key: string, fallback?: string) => t(key, fallback || '')} />}
 
           {filteredAreas.map((area) => {
             if (!area.location) return null;
@@ -218,12 +223,12 @@ const MapPage = () => {
 
                       <Stack direction="row" spacing={1} sx={{ my: 1 }}>
                         <Chip
-                          label={`${area.capacity - area.occupied} free`}
+                          label={t('map.freeSpaces', '{{count}} free', { count: area.capacity - area.occupied })}
                           color={color}
                           size="small"
                         />
                         <Chip
-                          label={`${Math.round(occupancyRate)}% full`}
+                          label={t('map.occupancyPercent', '{{percent}}% full', { percent: Math.round(occupancyRate) })}
                           variant="outlined"
                           size="small"
                         />
@@ -237,7 +242,7 @@ const MapPage = () => {
                         onClick={() => handleNavigate(area)}
                         sx={{ mt: 1 }}
                       >
-                        Navigate
+                        {t('map.navigate', 'Navigate')}
                       </Button>
                     </CardContent>
                   </Card>
@@ -264,7 +269,7 @@ const MapPage = () => {
               <Box sx={{ flex: 1 }}>
                 <Typography variant="h6">{selectedArea.name}</Typography>
                 <Typography variant="body2" color="text.secondary">
-                  {selectedArea.capacity - selectedArea.occupied} spaces available
+                  {t('map.spacesAvailable', '{{count}} spaces available', { count: selectedArea.capacity - selectedArea.occupied })}
                 </Typography>
               </Box>
               <Button
@@ -272,7 +277,7 @@ const MapPage = () => {
                 startIcon={<Navigation />}
                 onClick={() => handleNavigate(selectedArea)}
               >
-                Go
+                {t('map.go', 'Go')}
               </Button>
             </Stack>
           </Paper>

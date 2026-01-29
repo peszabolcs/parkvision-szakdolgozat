@@ -4,12 +4,16 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { I18nextProvider } from 'react-i18next';
 import i18n from './i18n/config';
 import { ThemeProvider } from './contexts/ThemeContext';
+import { AuthProvider } from './contexts/AuthContext';
 import Layout from './components/Layout';
 import AreasPage from './pages/AreasPage';
 import DashboardPage from './pages/DashboardPage';
 import ParkingSpacesPage from './pages/ParkingSpacesPage';
 import MapPage from './pages/MapPage';
 import AdminPage from './pages/AdminPage';
+import LoginPage from './pages/LoginPage';
+import PublicHomePage from './pages/PublicHomePage';
+import { ProtectedRoute } from './components/ProtectedRoute';
 import { PWAInstallPrompt } from './components/PWAInstallPrompt';
 import { OfflineIndicator } from './components/OfflineIndicator';
 
@@ -28,20 +32,27 @@ function App() {
       <ThemeProvider>
         <CssBaseline />
         <QueryClientProvider client={queryClient}>
-          <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<Layout />}>
-                <Route index element={<Navigate to="/dashboard" replace />} />
-                <Route path="dashboard" element={<DashboardPage />} />
-                <Route path="parking-spaces" element={<ParkingSpacesPage />} />
-                <Route path="areas" element={<AreasPage />} />
-                <Route path="map" element={<MapPage />} />
-                <Route path="admin" element={<AdminPage />} />
-              </Route>
-            </Routes>
-          </BrowserRouter>
-          <PWAInstallPrompt />
-          <OfflineIndicator />
+          <AuthProvider>
+            <BrowserRouter>
+              <Routes>
+                {/* Public Routes */}
+                <Route path="/" element={<PublicHomePage />} />
+                <Route path="/login" element={<LoginPage />} />
+
+                {/* Admin Routes - Protected */}
+                <Route path="/admin" element={<ProtectedRoute><Layout /></ProtectedRoute>}>
+                  <Route index element={<Navigate to="/admin/dashboard" replace />} />
+                  <Route path="dashboard" element={<DashboardPage />} />
+                  <Route path="parking-spaces" element={<ParkingSpacesPage />} />
+                  <Route path="areas" element={<AreasPage />} />
+                  <Route path="map" element={<MapPage />} />
+                  <Route path="admin-panel" element={<AdminPage />} />
+                </Route>
+              </Routes>
+            </BrowserRouter>
+            <PWAInstallPrompt />
+            <OfflineIndicator />
+          </AuthProvider>
         </QueryClientProvider>
       </ThemeProvider>
     </I18nextProvider>

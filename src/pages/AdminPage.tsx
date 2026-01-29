@@ -18,6 +18,7 @@ import {
   Tabs,
   Tab,
 } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 import { PageTransition } from '../components/PageTransition';
 import {
   TrendingUp,
@@ -28,8 +29,6 @@ import {
   Refresh,
 } from '@mui/icons-material';
 import {
-  LineChart,
-  Line,
   BarChart,
   Bar,
   PieChart,
@@ -71,6 +70,7 @@ const TabPanel = (props: TabPanelProps) => {
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884D8', '#82CA9D'];
 
 const AdminPage = () => {
+  const { t } = useTranslation();
   const { data: areas, isLoading, refetch } = useAreas();
   const [tabValue, setTabValue] = useState(0);
 
@@ -131,19 +131,11 @@ const AdminPage = () => {
     }));
   }, [areas]);
 
-  const revenueData = useMemo(() => {
-    const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-    return days.map((day) => ({
-      day,
-      revenue: Math.floor(Math.random() * 5000) + 2000,
-      bookings: Math.floor(Math.random() * 200) + 50,
-    }));
-  }, []);
 
   if (isLoading) {
     return (
       <Box sx={{ p: 3 }}>
-        <Typography role="status" aria-live="polite">Loading admin dashboard...</Typography>
+        <Typography role="status" aria-live="polite">{t('common.loading')}</Typography>
       </Box>
     );
   }
@@ -154,10 +146,10 @@ const AdminPage = () => {
       <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ mb: 3 }}>
         <Box>
           <Typography variant="h4" fontWeight="bold" gutterBottom component="h1">
-            Admin Dashboard
+            {t('admin.title')}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            Real-time analytics and system overview
+            {t('admin.subtitle', 'Real-time analytics and system overview')}
           </Typography>
         </Box>
         <IconButton onClick={() => refetch()} color="primary" aria-label="Refresh dashboard data">
@@ -172,7 +164,7 @@ const AdminPage = () => {
               <Stack direction="row" alignItems="center" justifyContent="space-between">
                 <Box>
                   <Typography color="text.secondary" variant="body2" gutterBottom>
-                    Total Capacity
+                    {t('dashboard.totalSpaces')}
                   </Typography>
                   <Typography variant="h4" fontWeight="bold">
                     {stats?.total}
@@ -190,7 +182,7 @@ const AdminPage = () => {
               <Stack direction="row" alignItems="center" justifyContent="space-between">
                 <Box>
                   <Typography color="text.secondary" variant="body2" gutterBottom>
-                    Occupied
+                    {t('dashboard.occupied')}
                   </Typography>
                   <Typography variant="h4" fontWeight="bold">
                     {stats?.occupied}
@@ -218,7 +210,7 @@ const AdminPage = () => {
               <Stack direction="row" alignItems="center" justifyContent="space-between">
                 <Box>
                   <Typography color="text.secondary" variant="body2" gutterBottom>
-                    Available
+                    {t('dashboard.available')}
                   </Typography>
                   <Typography variant="h4" fontWeight="bold">
                     {stats?.free}
@@ -236,7 +228,7 @@ const AdminPage = () => {
               <Stack direction="row" alignItems="center" justifyContent="space-between">
                 <Box>
                   <Typography color="text.secondary" variant="body2" gutterBottom>
-                    Occupancy Rate
+                    {t('dashboard.occupancyRate')}
                   </Typography>
                   <Typography variant="h4" fontWeight="bold">
                     {stats?.occupancyRate}%
@@ -251,20 +243,19 @@ const AdminPage = () => {
         <Grid item xs={12}>
           <Card>
             <CardContent>
-              <Tabs 
-                value={tabValue} 
+              <Tabs
+                value={tabValue}
                 onChange={(_, newValue) => setTabValue(newValue)}
                 aria-label="Chart selection tabs"
               >
-                <Tab label="Occupancy Trends" id="admin-tab-0" aria-controls="admin-tabpanel-0" />
-                <Tab label="Capacity Analysis" id="admin-tab-1" aria-controls="admin-tabpanel-1" />
-                <Tab label="Distribution" id="admin-tab-2" aria-controls="admin-tabpanel-2" />
-                <Tab label="Revenue" id="admin-tab-3" aria-controls="admin-tabpanel-3" />
+                <Tab label={t('admin.tabs.occupancyTrends')} id="admin-tab-0" aria-controls="admin-tabpanel-0" />
+                <Tab label={t('admin.tabs.capacityAnalysis')} id="admin-tab-1" aria-controls="admin-tabpanel-1" />
+                <Tab label={t('admin.tabs.distribution')} id="admin-tab-2" aria-controls="admin-tabpanel-2" />
               </Tabs>
 
               <TabPanel value={tabValue} index={0}>
                 <Typography variant="h6" gutterBottom>
-                  24-Hour Occupancy Trend
+                  {t('admin.charts.occupancyTrend')}
                 </Typography>
                 <ResponsiveContainer width="100%" height={400}>
                   <AreaChart data={timeSeriesData}>
@@ -279,7 +270,7 @@ const AdminPage = () => {
                       stroke="#8884d8"
                       fill="#8884d8"
                       fillOpacity={0.6}
-                      name="Occupancy Rate (%)"
+                      name={t('admin.charts.occupancyRateLabel')}
                     />
                   </AreaChart>
                 </ResponsiveContainer>
@@ -287,7 +278,7 @@ const AdminPage = () => {
 
               <TabPanel value={tabValue} index={1}>
                 <Typography variant="h6" gutterBottom>
-                  Capacity vs Occupancy by Area
+                  {t('admin.charts.capacityVsOccupancy')}
                 </Typography>
                 <ResponsiveContainer width="100%" height={400}>
                   <BarChart data={barData}>
@@ -296,15 +287,15 @@ const AdminPage = () => {
                     <YAxis />
                     <Tooltip />
                     <Legend />
-                    <Bar dataKey="capacity" fill="#8884d8" name="Total Capacity" />
-                    <Bar dataKey="occupied" fill="#82ca9d" name="Occupied" />
+                    <Bar dataKey="capacity" fill="#8884d8" name={t('admin.charts.totalCapacity')} />
+                    <Bar dataKey="occupied" fill="#82ca9d" name={t('admin.charts.occupied')} />
                   </BarChart>
                 </ResponsiveContainer>
               </TabPanel>
 
               <TabPanel value={tabValue} index={2}>
                 <Typography variant="h6" gutterBottom>
-                  Occupancy Distribution
+                  {t('admin.charts.occupancyDistribution')}
                 </Typography>
                 <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                   <ResponsiveContainer width="100%" height={400}>
@@ -328,38 +319,6 @@ const AdminPage = () => {
                   </ResponsiveContainer>
                 </Box>
               </TabPanel>
-
-              <TabPanel value={tabValue} index={3}>
-                <Typography variant="h6" gutterBottom>
-                  Weekly Revenue & Bookings
-                </Typography>
-                <ResponsiveContainer width="100%" height={400}>
-                  <LineChart data={revenueData}>
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="day" />
-                    <YAxis yAxisId="left" />
-                    <YAxis yAxisId="right" orientation="right" />
-                    <Tooltip />
-                    <Legend />
-                    <Line
-                      yAxisId="left"
-                      type="monotone"
-                      dataKey="revenue"
-                      stroke="#8884d8"
-                      name="Revenue ($)"
-                      strokeWidth={2}
-                    />
-                    <Line
-                      yAxisId="right"
-                      type="monotone"
-                      dataKey="bookings"
-                      stroke="#82ca9d"
-                      name="Bookings"
-                      strokeWidth={2}
-                    />
-                  </LineChart>
-                </ResponsiveContainer>
-              </TabPanel>
             </CardContent>
           </Card>
         </Grid>
@@ -368,18 +327,18 @@ const AdminPage = () => {
           <Card>
             <CardContent>
               <Typography variant="h6" gutterBottom>
-                Parking Areas Overview
+                {t('admin.table.title')}
               </Typography>
               <TableContainer component={Paper} variant="outlined">
                 <Table>
                   <TableHead>
                     <TableRow>
-                      <TableCell>Area Name</TableCell>
-                      <TableCell>Capacity</TableCell>
-                      <TableCell>Occupied</TableCell>
-                      <TableCell>Available</TableCell>
-                      <TableCell>Occupancy Rate</TableCell>
-                      <TableCell>Status</TableCell>
+                      <TableCell>{t('admin.table.areaName')}</TableCell>
+                      <TableCell>{t('admin.table.capacity')}</TableCell>
+                      <TableCell>{t('admin.table.occupied')}</TableCell>
+                      <TableCell>{t('admin.table.available')}</TableCell>
+                      <TableCell>{t('admin.table.occupancyRate')}</TableCell>
+                      <TableCell>{t('admin.table.status')}</TableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>

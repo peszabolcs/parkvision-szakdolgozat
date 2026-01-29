@@ -14,6 +14,8 @@ import {
   Menu,
   MenuItem,
   Stack,
+  Avatar,
+  Divider,
 } from '@mui/material';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import LocalParkingIcon from '@mui/icons-material/LocalParking';
@@ -22,31 +24,36 @@ import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import LanguageIcon from '@mui/icons-material/Language';
+import LogoutIcon from '@mui/icons-material/Logout';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useThemeMode } from '../contexts/useThemeMode';
+import { useAuth } from '../contexts/useAuth';
 import { useState } from 'react';
 
 const drawerWidth = 240;
 
-const menuItems = [
-  { path: '/dashboard', label: 'Dashboard', icon: <DashboardIcon /> },
-  {
-    path: '/parking-spaces',
-    label: 'Parking Spaces',
-    icon: <LocalParkingIcon />,
-  },
-  { path: '/areas', label: 'Areas', icon: <MapIcon /> },
-  { path: '/map', label: 'Map View', icon: <MapIcon /> },
-  { path: '/admin', label: 'Admin', icon: <AdminPanelSettingsIcon /> },
-];
-
 export default function Layout() {
   const navigate = useNavigate();
   const location = useLocation();
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { actualTheme, setMode } = useThemeMode();
+  const { user, logout } = useAuth();
   const [langAnchorEl, setLangAnchorEl] = useState<null | HTMLElement>(null);
+  const [userAnchorEl, setUserAnchorEl] = useState<null | HTMLElement>(null);
+
+  const menuItems = [
+    { path: '/admin/dashboard', label: t('nav.dashboard'), icon: <DashboardIcon /> },
+    {
+      path: '/admin/parking-spaces',
+      label: t('nav.parkingSpaces'),
+      icon: <LocalParkingIcon />,
+    },
+    { path: '/admin/areas', label: t('nav.areas'), icon: <MapIcon /> },
+    { path: '/admin/map', label: t('nav.map'), icon: <MapIcon /> },
+    { path: '/admin/admin-panel', label: t('nav.admin'), icon: <AdminPanelSettingsIcon /> },
+  ];
 
   const handleLanguageClick = (event: React.MouseEvent<HTMLElement>) => {
     setLangAnchorEl(event.currentTarget);
@@ -65,6 +72,20 @@ export default function Layout() {
     setMode(actualTheme === 'dark' ? 'light' : 'dark');
   };
 
+  const handleUserMenuClick = (event: React.MouseEvent<HTMLElement>) => {
+    setUserAnchorEl(event.currentTarget);
+  };
+
+  const handleUserMenuClose = () => {
+    setUserAnchorEl(null);
+  };
+
+  const handleLogout = () => {
+    logout();
+    handleUserMenuClose();
+    navigate('/');
+  };
+
 
 
   return (
@@ -79,10 +100,10 @@ export default function Layout() {
           <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
             ParkVision MVP
           </Typography>
-          
-          <Stack direction="row" spacing={1}>
-            <IconButton 
-              color="inherit" 
+
+          <Stack direction="row" spacing={1} alignItems="center">
+            <IconButton
+              color="inherit"
               onClick={handleLanguageClick}
               aria-label="Change language"
               aria-haspopup="true"
@@ -90,34 +111,77 @@ export default function Layout() {
             >
               <LanguageIcon />
             </IconButton>
-            <IconButton 
-              color="inherit" 
+            <IconButton
+              color="inherit"
               onClick={handleThemeToggle}
               aria-label={`Switch to ${actualTheme === 'dark' ? 'light' : 'dark'} mode`}
             >
               {actualTheme === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
             </IconButton>
+
+            {/* User Menu */}
+            <IconButton
+              color="inherit"
+              onClick={handleUserMenuClick}
+              aria-label="User menu"
+              aria-haspopup="true"
+              aria-expanded={Boolean(userAnchorEl)}
+            >
+              <Avatar sx={{ width: 32, height: 32, bgcolor: 'primary.dark' }}>
+                {user?.name?.charAt(0).toUpperCase() || 'A'}
+              </Avatar>
+            </IconButton>
           </Stack>
 
+          {/* Language Menu */}
           <Menu
             anchorEl={langAnchorEl}
             open={Boolean(langAnchorEl)}
             onClose={handleLanguageClose}
             aria-label="Language selection menu"
           >
-            <MenuItem 
+            <MenuItem
               onClick={() => handleLanguageChange('en')}
               selected={i18n.language === 'en'}
               aria-label="Switch to English"
             >
               English
             </MenuItem>
-            <MenuItem 
+            <MenuItem
               onClick={() => handleLanguageChange('hu')}
               selected={i18n.language === 'hu'}
               aria-label="Switch to Hungarian"
             >
               Magyar
+            </MenuItem>
+          </Menu>
+
+          {/* User Menu */}
+          <Menu
+            anchorEl={userAnchorEl}
+            open={Boolean(userAnchorEl)}
+            onClose={handleUserMenuClose}
+            aria-label="User menu"
+          >
+            <MenuItem disabled>
+              <Stack direction="row" spacing={1} alignItems="center">
+                <AccountCircleIcon />
+                <Box>
+                  <Typography variant="body2" fontWeight="bold">
+                    {user?.name || 'Admin'}
+                  </Typography>
+                  <Typography variant="caption" color="text.secondary">
+                    {user?.email || 'admin@parkvision.hu'}
+                  </Typography>
+                </Box>
+              </Stack>
+            </MenuItem>
+            <Divider />
+            <MenuItem onClick={handleLogout}>
+              <ListItemIcon>
+                <LogoutIcon fontSize="small" />
+              </ListItemIcon>
+              <ListItemText>{t('auth.logout')}</ListItemText>
             </MenuItem>
           </Menu>
         </Toolbar>

@@ -27,6 +27,21 @@ export interface DashboardStats {
   occupancyRate: number;
 }
 
+export interface ShoppingCenter {
+  id: string;
+  name: string;
+  address: string;
+  location: {
+    lat: number;
+    lng: number;
+  };
+  capacity: number;
+  occupied: number;
+  openingHours: string;
+  imageUrl?: string;
+  description: string;
+}
+
 export interface ApiError {
   message: string;
   code?: string;

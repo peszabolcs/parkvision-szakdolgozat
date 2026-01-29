@@ -64,6 +64,7 @@
   },
   "admin": {
     "title": "Admin Dashboard",
+    "subtitle": "Real-time analytics and system overview",
     "overview": "Overview",
     "statistics": "Statistics",
     "manageSpaces": "Manage Spaces",
@@ -71,14 +72,45 @@
     "addSpace": "Add New Space",
     "editSpace": "Edit Space",
     "deleteSpace": "Delete Space",
-    "confirmDelete": "Are you sure you want to delete this space?"
+    "confirmDelete": "Are you sure you want to delete this space?",
+    "tabs": {
+      "occupancyTrends": "Occupancy Trends",
+      "capacityAnalysis": "Capacity Analysis",
+      "distribution": "Distribution"
+    },
+    "charts": {
+      "occupancyTrend": "24-Hour Occupancy Trend",
+      "capacityVsOccupancy": "Capacity vs Occupancy by Area",
+      "occupancyDistribution": "Occupancy Distribution",
+      "occupancyRateLabel": "Occupancy Rate (%)",
+      "totalCapacity": "Total Capacity",
+      "occupied": "Occupied"
+    },
+    "table": {
+      "title": "Parking Areas Overview",
+      "areaName": "Area Name",
+      "capacity": "Capacity",
+      "occupied": "Occupied",
+      "available": "Available",
+      "occupancyRate": "Occupancy Rate",
+      "status": "Status"
+    }
   },
   "map": {
     "title": "Map",
     "showRoute": "Show Route",
     "currentLocation": "Current Location",
     "parkingLocation": "Parking Location",
-    "distanceAway": "{{distance}} km away"
+    "distanceAway": "{{distance}} km away",
+    "searchPlaceholder": "Search parking locations...",
+    "myLocation": "My Location",
+    "yourLocation": "Your Location",
+    "centerMap": "Center Map",
+    "freeSpaces": "{{count}} free",
+    "occupancyPercent": "{{percent}}% full",
+    "navigate": "Navigate",
+    "spacesAvailable": "{{count}} spaces available",
+    "go": "Go"
   },
   "common": {
     "loading": "Loading...",
@@ -119,5 +151,40 @@
     "later": "Later",
     "offline": "You are working offline",
     "online": "Online"
+  },
+  "auth": {
+    "adminLogin": "Admin Login",
+    "loginPrompt": "Sign in to access the admin panel",
+    "email": "Email address",
+    "password": "Password",
+    "login": "Login",
+    "logout": "Logout",
+    "loggingIn": "Logging in...",
+    "invalidCredentials": "Invalid email or password",
+    "loginError": "Login error occurred",
+    "demoCredentials": "Demo credentials",
+    "welcome": "Welcome"
+  },
+  "public": {
+    "findParking": "Find Parking",
+    "availableSpaces": "Available Spaces",
+    "occupied": "occupied",
+    "viewMap": "View Map",
+    "shoppingCenters": {
+      "title": "Shopping Centers"
+    },
+    "hero": {
+      "title": "Find Your Perfect Parking Spot",
+      "subtitle": "Real-time parking availability in Budapest shopping centers"
+    },
+    "map": {
+      "placeholder": "Interactive Map Coming Soon",
+      "description": "View all shopping centers on an interactive map"
+    },
+    "footer": {
+      "rights": "All rights reserved."
+    },
+    "noDataAvailable": "No data available",
+    "loading": "Loading..."
   }
 }
