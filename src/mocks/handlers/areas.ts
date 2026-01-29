@@ -1,48 +1,8 @@
 import { rest } from 'msw';
+import { parkingLocations } from '../data/parkingLocations';
 import type { Area } from '../../types';
 
-const mockAreas: Area[] = [
-  {
-    id: 'area-1',
-    name: 'Zone A - Ground Floor',
-    description: 'Ground floor parking area',
-    capacity: 20,
-    occupied: 16,
-    status: 'active',
-  },
-  {
-    id: 'area-2',
-    name: 'Zone B - Level 1',
-    description: 'First level parking area',
-    capacity: 25,
-    occupied: 15,
-    status: 'active',
-  },
-  {
-    id: 'area-3',
-    name: 'Zone C - Level 2',
-    description: 'Second level parking area',
-    capacity: 30,
-    occupied: 10,
-    status: 'active',
-  },
-  {
-    id: 'area-4',
-    name: 'Zone D - VIP Section',
-    description: 'Reserved VIP parking',
-    capacity: 10,
-    occupied: 8,
-    status: 'active',
-  },
-  {
-    id: 'area-5',
-    name: 'Zone E - Electric Charging',
-    description: 'EV charging stations',
-    capacity: 15,
-    occupied: 5,
-    status: 'active',
-  },
-];
+const mockAreas: Area[] = parkingLocations;
 
 const MOCK_SCENARIO = import.meta.env.VITE_MOCK_SCENARIO || 'normal';
 

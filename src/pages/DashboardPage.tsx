@@ -8,6 +8,7 @@ import EmptyState from '../components/EmptyState';
 import ErrorBanner from '../components/ErrorBanner';
 import { useParkingSpaces } from '../hooks/useParkingSpaces';
 import { useMemo } from 'react';
+import { PageTransition } from '../components/PageTransition';
 
 export default function DashboardPage() {
   const { data: spaces, isLoading, isError, error, refetch } = useParkingSpaces();
@@ -25,7 +26,7 @@ export default function DashboardPage() {
   }, [spaces]);
 
   if (isLoading) {
-    return <Typography>Loading...</Typography>;
+    return <Typography role="status" aria-live="polite">Loading...</Typography>;
   }
 
   if (isError) {
@@ -88,42 +89,44 @@ export default function DashboardPage() {
   }
 
   return (
-    <Box>
-      <Typography variant="h4" gutterBottom>
-        Dashboard
-      </Typography>
-      <Grid container spacing={3} sx={{ mb: 4 }}>
-        <Grid item xs={12} sm={6} md={3}>
-          <StatCard
-            title="Összes hely"
-            value={stats.total}
-            icon={<LocalParkingIcon />}
-          />
+    <PageTransition>
+      <Box>
+        <Typography variant="h4" gutterBottom component="h1">
+          Dashboard
+        </Typography>
+        <Grid container spacing={3} sx={{ mb: 4 }} role="region" aria-label="Parking statistics">
+          <Grid item xs={12} sm={6} md={3}>
+            <StatCard
+              title="Összes hely"
+              value={stats.total}
+              icon={<LocalParkingIcon />}
+            />
+          </Grid>
+          <Grid item xs={12} sm={6} md={3}>
+            <StatCard
+              title="Foglalt"
+              value={stats.occupied}
+              icon={<CancelIcon />}
+              color="#f44336"
+            />
+          </Grid>
+          <Grid item xs={12} sm={6} md={3}>
+            <StatCard
+              title="Szabad"
+              value={stats.free}
+              icon={<CheckCircleIcon />}
+              color="#4caf50"
+            />
+          </Grid>
+          <Grid item xs={12} sm={6} md={3}>
+            <StatCard
+              title="Foglaltság"
+              value={`${stats.occupancyRate}%`}
+              icon={<PercentIcon />}
+            />
+          </Grid>
         </Grid>
-        <Grid item xs={12} sm={6} md={3}>
-          <StatCard
-            title="Foglalt"
-            value={stats.occupied}
-            icon={<CancelIcon />}
-            color="#f44336"
-          />
-        </Grid>
-        <Grid item xs={12} sm={6} md={3}>
-          <StatCard
-            title="Szabad"
-            value={stats.free}
-            icon={<CheckCircleIcon />}
-            color="#4caf50"
-          />
-        </Grid>
-        <Grid item xs={12} sm={6} md={3}>
-          <StatCard
-            title="Foglaltság"
-            value={`${stats.occupancyRate}%`}
-            icon={<PercentIcon />}
-          />
-        </Grid>
-      </Grid>
-    </Box>
+      </Box>
+    </PageTransition>
   );
 }

@@ -13,6 +13,11 @@ export interface Area {
   capacity: number;
   occupied: number;
   status: 'active' | 'inactive';
+  location?: {
+    lat: number;
+    lng: number;
+    address: string;
+  };
 }
 
 export interface DashboardStats {

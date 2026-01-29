@@ -29,3 +29,5 @@ public/mockServiceWorker.js
 # Reports
 sprints/02/reports/*
 !sprints/02/reports/.gitkeep
+
+data.pdf

@@ -1,0 +1,96 @@
+{
+  "app": {
+    "title": "ParkVision",
+    "subtitle": "Smart Parking System"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "parkingSpaces": "Parking Spaces",
+    "areas": "Areas",
+    "admin": "Admin",
+    "map": "Map"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "totalSpaces": "Total Spaces",
+    "occupied": "Occupied",
+    "available": "Available",
+    "occupancyRate": "Occupancy Rate"
+  },
+  "parkingSpaces": {
+    "title": "Parking Spaces",
+    "search": "Search by ID or area",
+    "status": "Status",
+    "all": "All",
+    "occupied": "Occupied",
+    "free": "Free",
+    "spaceId": "Space ID",
+    "area": "Area",
+    "updated": "Updated"
+  },
+  "areas": {
+    "title": "Parking Areas",
+    "capacity": "Capacity",
+    "occupied": "Occupied",
+    "available": "Available",
+    "status": "Status",
+    "active": "Active",
+    "inactive": "Inactive"
+  },
+  "admin": {
+    "title": "Admin Dashboard",
+    "overview": "Overview",
+    "statistics": "Statistics",
+    "manageSpaces": "Manage Spaces",
+    "feedback": "Feedback",
+    "addSpace": "Add New Space",
+    "editSpace": "Edit Space",
+    "deleteSpace": "Delete Space",
+    "confirmDelete": "Are you sure you want to delete this space?"
+  },
+  "map": {
+    "title": "Map",
+    "showRoute": "Show Route",
+    "currentLocation": "Current Location",
+    "parkingLocation": "Parking Location",
+    "distanceAway": "{{distance}} km away"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "retry": "Retry",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "add": "Add",
+    "search": "Search",
+    "filter": "Filter",
+    "noData": "No data",
+    "settings": "Settings",
+    "language": "Language",
+    "theme": "Theme",
+    "dark": "Dark",
+    "light": "Light",
+    "auto": "Auto"
+  },
+  "empty": {
+    "noSpaces": "No parking spaces",
+    "noAreas": "No parking areas",
+    "noData": "No data available",
+    "tryAgain": "Try again later"
+  },
+  "error": {
+    "loadingFailed": "Failed to load data",
+    "networkError": "Network error",
+    "serverError": "Server error",
+    "tryAgain": "Try again"
+  },
+  "pwa": {
+    "installPrompt": "Install the app for faster access",
+    "install": "Install",
+    "later": "Later",
+    "offline": "You are working offline",
+    "online": "Online"
+  }
+}
