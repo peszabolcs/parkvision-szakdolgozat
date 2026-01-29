@@ -18,9 +18,10 @@ import {
   Divider,
 } from '@mui/material';
 import DashboardIcon from '@mui/icons-material/Dashboard';
-import LocalParkingIcon from '@mui/icons-material/LocalParking';
+import StorefrontIcon from '@mui/icons-material/Storefront';
 import MapIcon from '@mui/icons-material/Map';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
+import LocalParkingIcon from '@mui/icons-material/LocalParking';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import LanguageIcon from '@mui/icons-material/Language';
@@ -46,11 +47,10 @@ export default function Layout() {
   const menuItems = [
     { path: '/admin/dashboard', label: t('nav.dashboard'), icon: <DashboardIcon /> },
     {
-      path: '/admin/parking-spaces',
-      label: t('nav.parkingSpaces'),
-      icon: <LocalParkingIcon />,
+      path: '/admin/shopping-centers',
+      label: t('nav.shoppingCenters'),
+      icon: <StorefrontIcon />,
     },
-    { path: '/admin/areas', label: t('nav.areas'), icon: <MapIcon /> },
     { path: '/admin/map', label: t('nav.map'), icon: <MapIcon /> },
     { path: '/admin/admin-panel', label: t('nav.admin'), icon: <AdminPanelSettingsIcon /> },
   ];

@@ -5,47 +5,42 @@
   },
   "nav": {
     "dashboard": "Dashboard",
-    "parkingSpaces": "Parking Spaces",
-    "areas": "Areas",
+    "shoppingCenters": "Shopping Centers",
     "admin": "Admin",
     "map": "Map"
   },
   "dashboard": {
     "title": "Dashboard",
-    "totalSpaces": "Total Spaces",
+    "totalCenters": "Shopping Centers",
+    "totalCapacity": "Total Capacity",
     "occupied": "Occupied",
     "available": "Available",
-    "occupancyRate": "Occupancy Rate",
-    "noSpacesYet": "No parking spaces in the system yet. Start by creating the first space!",
-    "noSpacesTitle": "No parking spaces yet",
-    "noSpacesMessage": "There are no parking spaces in the system yet. Create the first parking space to get started!",
-    "addParkingSpace": "Add Parking Space",
-    "parkingStatistics": "Parking statistics"
+    "averageOccupancy": "Average Occupancy",
+    "noCentersYet": "No shopping centers in the system yet.",
+    "noCentersTitle": "No shopping centers yet",
+    "noCentersMessage": "There are no shopping centers in the system yet.",
+    "statistics": "Statistics"
   },
-  "parkingSpaces": {
-    "title": "Parking Spaces",
-    "search": "Search by ID or area",
-    "status": "Status",
-    "all": "All",
-    "occupied": "Occupied",
-    "free": "Free",
-    "spaceId": "Space ID",
-    "area": "Area",
-    "updated": "Updated",
-    "filter": "Filter",
-    "allSpaces": "All",
-    "onlyOccupied": "Only occupied",
-    "onlyFree": "Only free",
+  "shoppingCenters": {
+    "title": "Shopping Centers",
+    "filter": "Filter by Occupancy",
+    "filterAll": "All",
+    "filterLow": "Low (<50%)",
+    "filterMedium": "Medium (50-80%)",
+    "filterHigh": "High (>80%)",
     "results": "results",
     "tableHeaders": {
-      "id": "ID",
-      "status": "Status",
-      "area": "Area",
-      "updated": "Updated"
+      "name": "Name",
+      "address": "Address",
+      "capacity": "Capacity",
+      "occupied": "Occupied",
+      "available": "Available",
+      "occupancy": "Occupancy",
+      "actions": "Actions"
     },
-    "noSpacesTitle": "No parking spaces in the system yet",
-    "noSpacesMessage": "Create the first parking space to get started!",
-    "addParkingSpace": "Add Parking Space"
+    "noCentersTitle": "No shopping centers in the system yet",
+    "noCentersMessage": "There are no shopping centers in the system.",
+    "viewOnMap": "View on Map"
   },
   "areas": {
     "title": "Parking Areas",

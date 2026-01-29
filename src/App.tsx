@@ -6,9 +6,8 @@ import i18n from './i18n/config';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { AuthProvider } from './contexts/AuthContext';
 import Layout from './components/Layout';
-import AreasPage from './pages/AreasPage';
 import DashboardPage from './pages/DashboardPage';
-import ParkingSpacesPage from './pages/ParkingSpacesPage';
+import ShoppingCentersPage from './pages/ShoppingCentersPage';
 import MapPage from './pages/MapPage';
 import AdminPage from './pages/AdminPage';
 import LoginPage from './pages/LoginPage';
@@ -43,8 +42,7 @@ function App() {
                 <Route path="/admin" element={<ProtectedRoute><Layout /></ProtectedRoute>}>
                   <Route index element={<Navigate to="/admin/dashboard" replace />} />
                   <Route path="dashboard" element={<DashboardPage />} />
-                  <Route path="parking-spaces" element={<ParkingSpacesPage />} />
-                  <Route path="areas" element={<AreasPage />} />
+                  <Route path="shopping-centers" element={<ShoppingCentersPage />} />
                   <Route path="map" element={<MapPage />} />
                   <Route path="admin-panel" element={<AdminPage />} />
                 </Route>

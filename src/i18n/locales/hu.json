@@ -5,47 +5,42 @@
   },
   "nav": {
     "dashboard": "Vezérlőpult",
-    "parkingSpaces": "Parkolóhelyek",
-    "areas": "Területek",
+    "shoppingCenters": "Bevásárlóközpontok",
     "admin": "Admin",
     "map": "Térkép"
   },
   "dashboard": {
     "title": "Vezérlőpult",
-    "totalSpaces": "Összes hely",
+    "totalCenters": "Bevásárlóközpontok",
+    "totalCapacity": "Összes kapacitás",
     "occupied": "Foglalt",
     "available": "Szabad",
-    "occupancyRate": "Kihasználtság",
-    "noSpacesYet": "Még nincs parkolóhely a rendszerben. Kezdj hozzá az első hely létrehozásával!",
-    "noSpacesTitle": "Nincs még parkolóhely",
-    "noSpacesMessage": "A rendszerben még nincsenek parkolóhelyek. Hozd létre az első parkolóhelyet a kezdéshez!",
-    "addParkingSpace": "Parkolóhely hozzáadása",
-    "parkingStatistics": "Parkolási statisztikák"
+    "averageOccupancy": "Átlagos kihasználtság",
+    "noCentersYet": "Még nincs bevásárlóközpont a rendszerben.",
+    "noCentersTitle": "Nincs még bevásárlóközpont",
+    "noCentersMessage": "A rendszerben még nincsenek bevásárlóközpontok.",
+    "statistics": "Statisztikák"
   },
-  "parkingSpaces": {
-    "title": "Parkolóhelyek",
-    "search": "Keresés azonosító vagy terület alapján",
-    "status": "Státusz",
-    "all": "Összes",
-    "occupied": "Foglalt",
-    "free": "Szabad",
-    "spaceId": "Hely azonosító",
-    "area": "Terület",
-    "updated": "Frissítve",
-    "filter": "Szűrő",
-    "allSpaces": "Összes",
-    "onlyOccupied": "Csak foglalt",
-    "onlyFree": "Csak szabad",
+  "shoppingCenters": {
+    "title": "Bevásárlóközpontok",
+    "filter": "Szűrés kihasználtság szerint",
+    "filterAll": "Összes",
+    "filterLow": "Alacsony (<50%)",
+    "filterMedium": "Közepes (50-80%)",
+    "filterHigh": "Magas (>80%)",
     "results": "találat",
     "tableHeaders": {
-      "id": "ID",
-      "status": "Státusz",
-      "area": "Terület",
-      "updated": "Frissítve"
+      "name": "Név",
+      "address": "Cím",
+      "capacity": "Kapacitás",
+      "occupied": "Foglalt",
+      "available": "Szabad",
+      "occupancy": "Kihasználtság",
+      "actions": "Műveletek"
     },
-    "noSpacesTitle": "Nincs még parkolóhely a rendszerben",
-    "noSpacesMessage": "Hozd létre az első parkolóhelyet a kezdéshez!",
-    "addParkingSpace": "Parkolóhely hozzáadása"
+    "noCentersTitle": "Nincs még bevásárlóközpont a rendszerben",
+    "noCentersMessage": "A rendszerben még nincsenek bevásárlóközpontok.",
+    "viewOnMap": "Megtekintés térképen"
   },
   "areas": {
     "title": "Parkolási területek",
