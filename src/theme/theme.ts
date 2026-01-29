@@ -4,26 +4,26 @@ export const lightTheme = createTheme({
   palette: {
     mode: 'light',
     primary: {
-      main: '#6366f1',
-      light: '#818cf8',
-      dark: '#4f46e5',
+      main: '#26636f',
+      light: '#3d8492',
+      dark: '#1a464f',
       contrastText: '#ffffff',
     },
     secondary: {
-      main: '#ec4899',
-      light: '#f472b6',
-      dark: '#db2777',
+      main: '#f9a825',
+      light: '#fab84d',
+      dark: '#c17a00',
       contrastText: '#ffffff',
     },
     success: {
-      main: '#10b981',
-      light: '#34d399',
-      dark: '#059669',
+      main: '#00897b',
+      light: '#33a498',
+      dark: '#005f56',
     },
     warning: {
-      main: '#f59e0b',
-      light: '#fbbf24',
-      dark: '#d97706',
+      main: '#f9a825',
+      light: '#fab84d',
+      dark: '#c17a00',
     },
     error: {
       main: '#ef4444',
@@ -31,7 +31,7 @@ export const lightTheme = createTheme({
       dark: '#dc2626',
     },
     background: {
-      default: '#f8fafc',
+      default: '#f5f7f8',
       paper: '#ffffff',
     },
     text: {
@@ -117,9 +117,9 @@ export const lightTheme = createTheme({
           transition: 'all 0.2s ease-in-out',
         },
         contained: {
-          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+          background: 'linear-gradient(135deg, #26636f 0%, #00897b 100%)',
           '&:hover': {
-            background: 'linear-gradient(135deg, #5568d3 0%, #63348c 100%)',
+            background: 'linear-gradient(135deg, #1a464f 0%, #005f56 100%)',
           },
         },
       },
@@ -131,6 +131,7 @@ export const lightTheme = createTheme({
           boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
           backdropFilter: 'blur(10px)',
           background: alpha('#ffffff', 0.95),
+          border: `1px solid ${alpha('#26636f', 0.08)}`,
         },
       },
     },
@@ -151,26 +152,26 @@ export const darkTheme = createTheme({
   palette: {
     mode: 'dark',
     primary: {
-      main: '#818cf8',
-      light: '#a5b4fc',
-      dark: '#6366f1',
+      main: '#3d8492',
+      light: '#5fa1ae',
+      dark: '#26636f',
       contrastText: '#ffffff',
     },
     secondary: {
-      main: '#f472b6',
-      light: '#f9a8d4',
-      dark: '#ec4899',
-      contrastText: '#ffffff',
+      main: '#fab84d',
+      light: '#fcc975',
+      dark: '#f9a825',
+      contrastText: '#000000',
     },
     success: {
-      main: '#34d399',
-      light: '#6ee7b7',
-      dark: '#10b981',
+      main: '#33a498',
+      light: '#5cb8ad',
+      dark: '#00897b',
     },
     warning: {
-      main: '#fbbf24',
-      light: '#fcd34d',
-      dark: '#f59e0b',
+      main: '#fab84d',
+      light: '#fcc975',
+      dark: '#f9a825',
     },
     error: {
       main: '#f87171',
@@ -178,8 +179,8 @@ export const darkTheme = createTheme({
       dark: '#ef4444',
     },
     background: {
-      default: '#0f172a',
-      paper: '#1e293b',
+      default: '#1a2630',
+      paper: '#26313c',
     },
     text: {
       primary: '#f1f5f9',
@@ -264,9 +265,9 @@ export const darkTheme = createTheme({
           transition: 'all 0.2s ease-in-out',
         },
         contained: {
-          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+          background: 'linear-gradient(135deg, #3d8492 0%, #33a498 100%)',
           '&:hover': {
-            background: 'linear-gradient(135deg, #5568d3 0%, #63348c 100%)',
+            background: 'linear-gradient(135deg, #26636f 0%, #00897b 100%)',
           },
         },
       },
@@ -277,8 +278,8 @@ export const darkTheme = createTheme({
           borderRadius: 16,
           boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.5), 0 2px 4px -2px rgb(0 0 0 / 0.5)',
           backdropFilter: 'blur(20px)',
-          background: alpha('#1e293b', 0.95),
-          border: `1px solid ${alpha('#ffffff', 0.05)}`,
+          background: alpha('#26313c', 0.95),
+          border: `1px solid ${alpha('#3d8492', 0.15)}`,
         },
       },
     },

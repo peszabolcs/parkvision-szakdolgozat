@@ -10,10 +10,21 @@ export const OfflineIndicator = () => {
   const [showOnlineMessage, setShowOnlineMessage] = useState(false);
 
   useEffect(() => {
-    if (isOnline && !showOnlineMessage) {
-      setShowOnlineMessage(true);
-      const timer = setTimeout(() => setShowOnlineMessage(false), 3000);
-      return () => clearTimeout(timer);
+    const OFFLINE_STATE_KEY = 'hadOfflineState';
+    
+    if (isOnline) {
+      const wasOffline = sessionStorage.getItem(OFFLINE_STATE_KEY) === 'true';
+      
+      if (wasOffline && !showOnlineMessage) {
+        setShowOnlineMessage(true);
+        const timer = setTimeout(() => {
+          setShowOnlineMessage(false);
+          sessionStorage.removeItem(OFFLINE_STATE_KEY);
+        }, 3000);
+        return () => clearTimeout(timer);
+      }
+    } else {
+      sessionStorage.setItem(OFFLINE_STATE_KEY, 'true');
     }
   }, [isOnline, showOnlineMessage]);
 

@@ -24,7 +24,7 @@ import Brightness7Icon from '@mui/icons-material/Brightness7';
 import LanguageIcon from '@mui/icons-material/Language';
 import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { useThemeMode } from '../contexts/ThemeContext';
+import { useThemeMode } from '../contexts/useThemeMode';
 import { useState } from 'react';
 
 const drawerWidth = 240;

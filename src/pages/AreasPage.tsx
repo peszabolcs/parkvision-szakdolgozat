@@ -10,20 +10,22 @@ import {
 import { useAreas } from '../hooks/useAreas';
 import EmptyState from '../components/EmptyState';
 import ErrorBanner from '../components/ErrorBanner';
+import { useTranslation } from 'react-i18next';
 
 export default function AreasPage() {
+  const { t } = useTranslation();
   const { data: areas, isLoading, isError, error, refetch } = useAreas();
 
   if (isLoading) {
-    return <Typography>Loading...</Typography>;
+    return <Typography>{t('common.loading')}</Typography>;
   }
 
   if (isError) {
     return (
       <ErrorBanner
-        message={`Hiba történt az adatok lekérésekor: ${
-          error instanceof Error ? error.message : 'Ismeretlen hiba'
-        }`}
+        message={t('common.errorOccurred', { 
+          message: error instanceof Error ? error.message : t('common.unknownError')
+        })}
         onRetry={() => refetch()}
       />
     );
@@ -33,12 +35,12 @@ export default function AreasPage() {
     return (
       <Box>
         <Typography variant="h4" gutterBottom>
-          Areas
+          {t('areas.title')}
         </Typography>
         <EmptyState
-          title="Még nincs parkolási terület definiálva"
-          message="Hozd létre az első területet a kezdéshez!"
-          actionLabel="Terület létrehozása"
+          title={t('areas.noAreasTitle')}
+          message={t('areas.noAreasMessage')}
+          actionLabel={t('areas.createArea')}
         />
       </Box>
     );
@@ -53,10 +55,10 @@ export default function AreasPage() {
   return (
     <Box>
       <Typography variant="h4" gutterBottom>
-        Areas (Parkolási Területek)
+        {t('areas.title')}
       </Typography>
       <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
-        {areas.length} terület összesen
+        {areas.length} {t('areas.totalAreas')}
       </Typography>
 
       <Grid container spacing={3}>
@@ -69,7 +71,7 @@ export default function AreasPage() {
                   <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 1 }}>
                     <Typography variant="h6">{area.name}</Typography>
                     <Chip
-                      label={area.status === 'active' ? 'Active' : 'Inactive'}
+                      label={area.status === 'active' ? t('areas.active') : t('areas.inactive')}
                       color={area.status === 'active' ? 'success' : 'default'}
                       size="small"
                     />
@@ -78,10 +80,10 @@ export default function AreasPage() {
                     {area.description}
                   </Typography>
                   <Typography variant="body2" sx={{ mb: 1 }}>
-                    Kapacitás: {area.capacity} hely
+                    {t('areas.capacityLabel', { count: area.capacity })}
                   </Typography>
                   <Typography variant="body2" sx={{ mb: 1 }}>
-                    Foglaltság: {area.occupied} / {area.capacity} ({occupancyRate}%)
+                    {t('areas.occupancyLabel', { occupied: area.occupied, capacity: area.capacity, rate: occupancyRate })}
                   </Typography>
                   <LinearProgress
                     variant="determinate"

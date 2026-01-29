@@ -9,8 +9,10 @@ import ErrorBanner from '../components/ErrorBanner';
 import { useParkingSpaces } from '../hooks/useParkingSpaces';
 import { useMemo } from 'react';
 import { PageTransition } from '../components/PageTransition';
+import { useTranslation } from 'react-i18next';
 
 export default function DashboardPage() {
+  const { t } = useTranslation();
   const { data: spaces, isLoading, isError, error, refetch } = useParkingSpaces();
 
   const stats = useMemo(() => {
@@ -26,15 +28,15 @@ export default function DashboardPage() {
   }, [spaces]);
 
   if (isLoading) {
-    return <Typography role="status" aria-live="polite">Loading...</Typography>;
+    return <Typography role="status" aria-live="polite">{t('common.loading')}</Typography>;
   }
 
   if (isError) {
     return (
       <ErrorBanner
-        message={`Hiba történt az adatok lekérésekor: ${
-          error instanceof Error ? error.message : 'Ismeretlen hiba'
-        }`}
+        message={t('common.errorOccurred', { 
+          message: error instanceof Error ? error.message : t('common.unknownError')
+        })}
         onRetry={() => refetch()}
       />
     );
@@ -44,45 +46,44 @@ export default function DashboardPage() {
     return (
       <>
         <Alert severity="info" sx={{ mb: 3 }}>
-          Még nincs parkolóhely a rendszerben. Kezdj hozzá az első hely
-          létrehozásával!
+          {t('dashboard.noSpacesYet')}
         </Alert>
         <Grid container spacing={3} sx={{ mb: 4 }}>
           <Grid item xs={12} sm={6} md={3}>
             <StatCard
-              title="Összes hely"
+              title={t('dashboard.totalSpaces')}
               value={0}
               icon={<LocalParkingIcon />}
             />
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
             <StatCard
-              title="Foglalt"
+              title={t('dashboard.occupied')}
               value={0}
               icon={<CancelIcon />}
-              color="#f44336"
+              color="#ef4444"
             />
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
             <StatCard
-              title="Szabad"
+              title={t('dashboard.available')}
               value={0}
               icon={<CheckCircleIcon />}
-              color="#4caf50"
+              color="#00897b"
             />
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
             <StatCard
-              title="Foglaltság"
+              title={t('dashboard.occupancyRate')}
               value="0%"
               icon={<PercentIcon />}
             />
           </Grid>
         </Grid>
         <EmptyState
-          title="Nincs még parkolóhely"
-          message="A rendszerben még nincsenek parkolóhelyek. Hozd létre az első parkolóhelyet a kezdéshez!"
-          actionLabel="Parkolóhely hozzáadása"
+          title={t('dashboard.noSpacesTitle')}
+          message={t('dashboard.noSpacesMessage')}
+          actionLabel={t('dashboard.addParkingSpace')}
         />
       </>
     );
@@ -92,35 +93,35 @@ export default function DashboardPage() {
     <PageTransition>
       <Box>
         <Typography variant="h4" gutterBottom component="h1">
-          Dashboard
+          {t('dashboard.title')}
         </Typography>
-        <Grid container spacing={3} sx={{ mb: 4 }} role="region" aria-label="Parking statistics">
+        <Grid container spacing={3} sx={{ mb: 4 }} role="region" aria-label={t('dashboard.parkingStatistics')}>
           <Grid item xs={12} sm={6} md={3}>
             <StatCard
-              title="Összes hely"
+              title={t('dashboard.totalSpaces')}
               value={stats.total}
               icon={<LocalParkingIcon />}
             />
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
             <StatCard
-              title="Foglalt"
+              title={t('dashboard.occupied')}
               value={stats.occupied}
               icon={<CancelIcon />}
-              color="#f44336"
+              color="#ef4444"
             />
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
             <StatCard
-              title="Szabad"
+              title={t('dashboard.available')}
               value={stats.free}
               icon={<CheckCircleIcon />}
-              color="#4caf50"
+              color="#00897b"
             />
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
             <StatCard
-              title="Foglaltság"
+              title={t('dashboard.occupancyRate')}
               value={`${stats.occupancyRate}%`}
               icon={<PercentIcon />}
             />

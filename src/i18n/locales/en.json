@@ -15,7 +15,12 @@
     "totalSpaces": "Total Spaces",
     "occupied": "Occupied",
     "available": "Available",
-    "occupancyRate": "Occupancy Rate"
+    "occupancyRate": "Occupancy Rate",
+    "noSpacesYet": "No parking spaces in the system yet. Start by creating the first space!",
+    "noSpacesTitle": "No parking spaces yet",
+    "noSpacesMessage": "There are no parking spaces in the system yet. Create the first parking space to get started!",
+    "addParkingSpace": "Add Parking Space",
+    "parkingStatistics": "Parking statistics"
   },
   "parkingSpaces": {
     "title": "Parking Spaces",
@@ -26,7 +31,21 @@
     "free": "Free",
     "spaceId": "Space ID",
     "area": "Area",
-    "updated": "Updated"
+    "updated": "Updated",
+    "filter": "Filter",
+    "allSpaces": "All",
+    "onlyOccupied": "Only occupied",
+    "onlyFree": "Only free",
+    "results": "results",
+    "tableHeaders": {
+      "id": "ID",
+      "status": "Status",
+      "area": "Area",
+      "updated": "Updated"
+    },
+    "noSpacesTitle": "No parking spaces in the system yet",
+    "noSpacesMessage": "Create the first parking space to get started!",
+    "addParkingSpace": "Add Parking Space"
   },
   "areas": {
     "title": "Parking Areas",
@@ -35,7 +54,13 @@
     "available": "Available",
     "status": "Status",
     "active": "Active",
-    "inactive": "Inactive"
+    "inactive": "Inactive",
+    "totalAreas": "areas total",
+    "capacityLabel": "Capacity: {{count}} spaces",
+    "occupancyLabel": "Occupancy: {{occupied}} / {{capacity}} ({{rate}}%)",
+    "noAreasTitle": "No parking area defined yet",
+    "noAreasMessage": "Create the first area to get started!",
+    "createArea": "Create Area"
   },
   "admin": {
     "title": "Admin Dashboard",
@@ -72,7 +97,9 @@
     "theme": "Theme",
     "dark": "Dark",
     "light": "Light",
-    "auto": "Auto"
+    "auto": "Auto",
+    "errorOccurred": "An error occurred while fetching data: {{message}}",
+    "unknownError": "Unknown error"
   },
   "empty": {
     "noSpaces": "No parking spaces",
